@@ -1,0 +1,39 @@
+using System;
+using Xamarin.Forms;
+
+namespace SmartHomeApp
+{
+    public partial class MainPage : ContentPage
+    {
+        MqttService mqttService;
+
+        public MainPage()
+        {
+            InitializeComponent();
+            mqttService = new MqttService();
+            mqttService.StartMqtt();
+        }
+
+        private void OnLightToggled(object sender, ToggledEventArgs e)
+        {
+            string message = e.Value ? "light_on" : "light_off";
+            mqttService.PublishMessage("smarthome/light", message);
+        }
+
+        private void OnFanToggled(object sender, ToggledEventArgs e)
+        {
+            string message = e.Value ? "fan_on" : "fan_off";
+            mqttService.PublishMessage("smarthome/fan", message);
+        }
+
+        public void UpdateTemperature(string temp)
+        {
+            TempLabel.Text = $"Temperature: {temp} °C";
+        }
+
+        public void UpdateHumidity(string humidity)
+        {
+            HumidityLabel.Text = $"Humidity: {humidity} %";
+        }
+    }
+}

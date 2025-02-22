@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartHomeApp.MainPage">
+    <StackLayout Padding="20">
+        <Label Text="Smart Home Control"
+               FontSize="24"
+               HorizontalOptions="Center"
+               VerticalOptions="Start" />
+        
+        <!-- Toggle Switch for Light -->
+        <StackLayout Orientation="Horizontal" Margin="10">
+            <Label Text="Light" FontSize="18"/>
+            <Switch x:Name="LightSwitch" Toggled="OnLightToggled"/>
+        </StackLayout>
+
+        <!-- Toggle Switch for Fan -->
+        <StackLayout Orientation="Horizontal" Margin="10">
+            <Label Text="Fan" FontSize="18"/>
+            <Switch x:Name="FanSwitch" Toggled="OnFanToggled"/>
+        </StackLayout>
+
+        <!-- Temperature Display -->
+        <Label x:Name="TempLabel"
+               Text="Temperature: -- °C"
+               FontSize="18"
+               HorizontalOptions="Center"/>
+
+        <!-- Humidity Display -->
+        <Label x:Name="HumidityLabel"
+               Text="Humidity: -- %"
+               FontSize="18"
+               HorizontalOptions="Center"/>
+    </StackLayout>
+</ContentPage>
